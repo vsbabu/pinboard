@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pinboard</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="board.css" />
+</head>
+<body style="background:url(linen.png);background-color:#666666;">
+<div id="container" class="clearfix" style="background:inherit;">
+</div>
+
+<script type="text/javascript" src="board.js.yml"></script>
+<script type="text/javascript" src="yaml.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+  function drawBox(b) {
+        li = "";
+        for (i in b.items) {
+          var txt = b.items[i];
+          var styles = "";
+          var suffix = "";
+          if (txt.substring(0,1)=='-') {
+            styles = "done";
+            txt = txt.substring(1, txt.length);
+          }
+          while (true) {
+            if (txt.substring(0,1)=='^') {
+              suffix = suffix + "<span class=\"flagged\" title=\"important\"></span>";
+              txt = txt.substring(1, txt.length);
+            } else {
+              break;
+            }
+          }
+          while (true) {
+            if (txt.substring(0,1)=='~') {
+              suffix = suffix + "<span class=\"wip\" title=\"wip\"></span>";
+              txt = txt.substring(1, txt.length);
+            } else {
+              break;
+            }
+          }
+          if (styles != "")
+            txt = "<span class=\"" + styles +  "\">" + txt + "</span>";
+          li = li + "<li>" + txt + suffix + "</li>";
+        }
+        if (li != "") 
+          li = "<ul style=\"list-style:disk;\">" + li + "</ul>";
+        if (b.note != undefined) li = li + "<div class=\"note\">" + b.note + "</div>";
+        b.color = (b.color != undefined)?b.color:"yellow";
+        b.spread = (b.spread != undefined)?b.spread:"3";
+        li = "<div class=\"box col" + b.spread + " \" style=\"background-color:" + b.color + ";\"><h2>" + b.title + "</h2>" + li + "</div>";
+        $('#container').prepend(li);
+  }
+
+  function drawBoard(board){ 
+    for (j in board) {
+      var b = board[j];
+      drawBox(b);
+    }
+  }
+
+  $(function(){
+
+    var boards = YAML.parse(boxesInput);
+    for (i in boards){ 
+      var b = boards[i];
+      drawBox(b);
+    }
+
+    $('#container').masonry({
+      itemSelector: '.box',
+      columnWidth: 100
+    });
+    
+  });
+</script>
+
+</body>
+</html>

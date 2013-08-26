@@ -1,0 +1,87 @@
+/*
+This is the data file that is served up by index.html
+
+Add your tasks, projects or whatever you want to put in boxes here
+
+instead of putting this in a proper yaml file, wrapping it as javascript so that
+we don't need a webserver to serve it and file:/// will work just as well
+hack to allow multiline javascript string
+
+ * prefix item with - to mark it with a strikethrough
+ *  prefix it with a ^ to draw a flag. More ^ means more flags
+ *  prefix with a ~ to make it show up with a mail icon - ie, waiting for someone
+
+get your color names from http://www.w3schools.com/html/html_colornames.asp
+some good colors are yellow, greenyellow, yellowgreen, cornsilk, orange, tomato, skyblue, fuchsia, khaki, hotpink, lightpink
+*/
+
+var boxesInput = function(){/*
+- title: @Self
+  color: cornsilk
+  items:
+    - Followup with the painter
+    - Pay utilities bill
+- title: Scary Project
+  color: tomato
+  items:
+    - ^ Request for proposal complete
+    - - Make peace with COBOL
+    - Get going on DNA sequencing
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+- title: Rainmaker
+  color: greenyellow
+  items:
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+- title: Windcheater
+  color: fuchsia
+  items:
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+- title: Earthmover
+  color: khaki
+  items:
+    - ~ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Etiam porta neque vitae nunc luctus hendrerit.
+    - Aliquam nec orci a tortor facilisis ullamcorper.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Phasellus id erat condimentum, dignissim lacus eu, dignissim mi.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+    - Morbi id diam ut magna semper iaculis sit amet eu ligula.
+*/}.toString().slice(14,-3);
+/*
+  vim: set ft=yaml:foldenable:foldmethod=indent:foldlevel=1:
+*/
