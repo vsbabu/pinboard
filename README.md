@@ -5,7 +5,7 @@ When you've multiple lists to manage and you don't want a cross platform, web sy
 I maintain my lists using [VIM](http://www.vim.org/), much easier than all list-managers out there. This html+js combo just takes that
 list and displays in a nice (IMHO) view. 
 
-![Obligatory screenshot](ss2013-06-08.png)
+![Obligatory screenshot](https://raw.github.com/vsbabu/pinboard/master/ss2013-08-26.png)
 
 ## Installation
 Just unzip all files to a folder. Open `index.html` in a browser. Tested in Chrome and Firefox.
