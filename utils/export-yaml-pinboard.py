@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 import sys
 import os
-import datetime 
+import datetime
 
 #--------------------------------------------------------------------------
 #
 # prints an yaml styled like a pin board. run it like
 #   python this-script.py project1 project2 project3 etc
+#
+# You can use the word all to generate a list not based on project name
 #
 # author : vsbabu_AT_gmail_._com
 #
@@ -83,20 +85,41 @@ def get_tasks_for_project(project, tags=""):
         tasks = append(tasks, lin)
     return tasks
 
+def get_all_tasks(tags=""):
+    tasks = array([])
+    p = os.popen('task export %s' % (tags),"r")
+    while 1:
+        line = p.readline()
+        if not line: break
+        try:
+            lin = eval(line)
+        except:
+            #print "****[%s]****" % line
+            continue
+        tasks = append(tasks, lin)
+    return tasks
+
+
 def main():
     colors = "yellow greenyellow yellowgreen cornsilk orange  skyblue  khaki lightpink".split()
     count = 0
     for project in sys.argv[1:]:
         #todo = get_tasks_for_project(project, "status:pending due.before:60days")
-        todo = get_tasks_for_project(project, "status:pending")
+        if project == "all":
+            todo = get_all_tasks("status:pending")
+        else:
+            todo = get_tasks_for_project(project, "status:pending")
         try:
             tmp = sorted(todo, key=itemgetter('due'), reverse=False)
             todo = tmp
         except:
-           pass 
-        done = get_tasks_for_project(project, "status:completed")
-        done = sorted(done, key=itemgetter('end'), reverse=True)
-        if 0 == len(todo) + len(done): 
+           pass
+        if project == "all":
+            done = ()
+        else:
+            done = get_tasks_for_project(project, "status:completed")
+            done = sorted(done, key=itemgetter('end'), reverse=True)
+        if 0 == len(todo) + len(done):
             continue
         if len(todo) > TOTAL_TASKS_TO_SHOW:
             todo = todo[0:TOTAL_TASKS_TO_SHOW]
